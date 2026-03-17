@@ -13,5 +13,16 @@ func NewTask(description, priority string) *Task {
 	return &Task{
 		Description: description,
 		Priority:    priority,
+		Status:      "pending",
+		CreatedAt:   "",
+		UpdatedAt:   "",
 	}
+}
+
+func LoadTasks() ([]Task, error) {
+	return nil, nil
+}
+
+func SaveTasks(tasks []Task) error {
+	return nil
 }

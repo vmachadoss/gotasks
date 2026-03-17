@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"os"
 	"strings"
+
+	"github.com/vmachadoss/gotasks/internal/storage"
 )
 
 // 	"github.com/vmachadoss/gotasks/internal/storage"
@@ -37,4 +39,22 @@ func RunAdd(args []string) {
 		fmt.Println("Invalid priority. Use low, medium, or high instead.")
 		os.Exit(1)
 	}
+
+	task := storage.NewTask(description, *priority)
+	tasks, err := storage.LoadTasks()
+	if err != nil {
+		fmt.Printf("Error loading tasks: %v\n", err)
+		os.Exit(1)
+	}
+
+	tasks = append(tasks, task)
+	if err := storage.SaveTasks(tasks); err != nil {
+		fmt.Printf("Error saving task: %v\n", err)
+		os.Exit(1)
+	}
+
+	fmt.Printf("Task criada com sucesso!\n")
+	fmt.Printf("  Desc:     %s\n", task.Description)
+	fmt.Printf("  Status:   %s\n", task.Status)
+	fmt.Printf("  Priority: %s\n", task.Priority)
 }
