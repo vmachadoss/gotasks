@@ -110,3 +110,45 @@ func NextID(tasks []Task) int {
 	}
 	return max + 1
 }
+
+func UpdateTask(id int, updates map[string]string) (*Task, error) {
+	tasks, err := LoadTasks()
+	if err != nil {
+		return nil, err
+	}
+
+	var found *Task
+	for i, task := range tasks {
+		if task.ID == id {
+			for key, value := range updates {
+				switch key {
+				case "description":
+					if value != "" {
+						tasks[i].Description = value
+					}
+				case "priority":
+					if value != "" {
+						tasks[i].Priority = value
+					}
+				case "status":
+					if value != "" {
+						tasks[i].Status = value
+					}
+				}
+			}
+			tasks[i].UpdatedAt = time.Now().Format("2006-01-02T15:04:05Z07:00")
+			found = &tasks[i]
+			break
+		}
+	}
+
+	if found == nil {
+		return nil, fmt.Errorf("Task %d not found", id)
+	}
+
+	if err := SaveTasks(tasks); err != nil {
+		return nil, err
+	}
+
+	return found, nil
+}
