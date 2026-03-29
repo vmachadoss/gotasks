@@ -45,7 +45,9 @@ func RunAdd(args []string) {
 		os.Exit(1)
 	}
 
-	tasks = append(tasks, task)
+	task.ID = storage.NextID(tasks)
+	tasks = append(tasks, *task)
+
 	if err := storage.SaveTasks(tasks); err != nil {
 		fmt.Printf("Error saving task: %v\n", err)
 		os.Exit(1)
