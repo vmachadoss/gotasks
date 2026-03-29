@@ -15,6 +15,8 @@ func main() {
 	switch subcommand {
 	case "add":
 		cmd.RunAdd(args)
+	case "edit":
+		cmd.RunEdit(args)
 	// case "list":
 	// 	cmd.ListTasks()
 	// case "delete":
