@@ -152,3 +152,42 @@ func UpdateTask(id int, updates map[string]string) (*Task, error) {
 
 	return found, nil
 }
+
+func GetTaskByID(id int) (*Task, error) {
+	tasks, err := LoadTasks()
+	if err != nil {
+		return nil, err
+	}
+
+	for _, task := range tasks {
+		if task.ID == id {
+			t := task
+			return &t, nil
+		}
+	}
+	return nil, fmt.Errorf("task with ID %d not found", id)
+}
+
+func FilterTasks(status, priority string, id int) ([]Task, error) {
+	tasks, err := LoadTasks()
+	if err != nil {
+		return nil, err
+	}
+
+	var filtered []Task
+
+	for _, task := range tasks {
+		if status != "" && task.Status != status {
+			continue
+		}
+		if priority != "" && task.Priority != priority {
+			continue
+		}
+		if id != 0 && task.ID != id {
+			continue
+		}
+		filtered = append(filtered, task)
+	}
+
+	return filtered, nil
+}

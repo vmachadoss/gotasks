@@ -8,7 +8,6 @@ import (
 )
 
 func main() {
-	fmt.Println("Welcome to GoTasks!")
 	subcommand := os.Args[1]
 	args := os.Args[2:]
 
@@ -17,8 +16,10 @@ func main() {
 		cmd.RunAdd(args)
 	case "edit":
 		cmd.RunEdit(args)
-	// case "list":
-	// 	cmd.ListTasks()
+	case "list":
+		cmd.RunList(args)
+	case "get":
+		cmd.RunGet(args)
 	// case "delete":
 	// 	cmd.DeleteTask(args)
 	default:
