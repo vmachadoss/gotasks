@@ -301,7 +301,7 @@ Please open an [issue](https://github.com/vmachadoss/gotasks/issues) with:
 
 ## 📝 License
 
-MIT License © 2024 - See the [LICENSE](LICENSE) file for details.
+MIT License © 2026 - See the [LICENSE](LICENSE) file for details.
 
 This project is free to use, modify, and distribute.
 
