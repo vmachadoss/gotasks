@@ -61,7 +61,6 @@ gotasks add "Update dependencies" --priority low
 
 **Example Output:**
 ```
-Welcome to GoTasks!
 Task criada com sucesso!
   Desc:     Complete project report
   Status:   pending
@@ -97,7 +96,6 @@ gotasks list --status in-progress --priority high
 
 **Example Output:**
 ```
-Welcome to GoTasks!
 ID    DESCRIPTION                                        STATUS        PRIORITY
 ----  --------------------------------------------------  -----------  ----------
 1     Complete project report                           pending      medium
@@ -125,7 +123,6 @@ gotasks get 1
 
 **Example Output:**
 ```
-Welcome to GoTasks!
 Task details:
   --------------------------------
   ID:          1
