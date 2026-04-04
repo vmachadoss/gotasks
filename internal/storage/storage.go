@@ -191,3 +191,31 @@ func FilterTasks(status, priority string, id int) ([]Task, error) {
 
 	return filtered, nil
 }
+
+func DeleteTask(id int) (*Task, error) {
+	tasks, err := LoadTasks()
+	if err != nil {
+		return nil, err
+	}
+
+	var deleted *Task
+	for i, task := range tasks {
+		if task.ID == id {
+			t := task
+			deleted = &t
+
+			tasks = append(tasks[:i], tasks[i+1:]...)
+			break
+		}
+	}
+
+	if deleted == nil {
+		return nil, fmt.Errorf("Task %d not found", id)
+	}
+
+	if err := SaveTasks(tasks); err != nil {
+		return nil, err
+	}
+
+	return deleted, nil
+}
