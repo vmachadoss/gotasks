@@ -20,8 +20,8 @@ func main() {
 		cmd.RunList(args)
 	case "get":
 		cmd.RunGet(args)
-	// case "delete":
-	// 	cmd.DeleteTask(args)
+	case "rm":
+		cmd.RunRm(args)
 	default:
 		fmt.Println("Unknown subcommand")
 	}
