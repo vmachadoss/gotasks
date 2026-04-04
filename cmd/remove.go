@@ -28,7 +28,6 @@ func RunRm(args []string) {
 		os.Exit(1)
 	}
 
-	// Exibe os detalhes da task que será deletada
 	fmt.Println("Task to be deleted:")
 	fmt.Printf("  ID:          %d\n", task.ID)
 	fmt.Printf("  Description: %s\n", task.Description)
@@ -39,7 +38,6 @@ func RunRm(args []string) {
 	fmt.Printf("Are you sure you want to delete this task? (y/n): ")
 	reader := bufio.NewReader(os.Stdin)
 
-	// ReadString('\n') lê tudo até o usuário pressionar Enter
 	input, err := reader.ReadString('\n')
 	if err != nil {
 		fmt.Printf("Error reading input: %v\n", err)
