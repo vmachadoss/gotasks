@@ -9,10 +9,11 @@ import (
 	"github.com/vmachadoss/gotasks/internal/storage"
 )
 
-/* RunAdd adds a new task to the task list when the "gotasks add" command is invoked.
- *
- * Usage: gotasks add <descrição> [--priority low|medium|high]
- */
+/*
+RunAdd adds a new task to the task list when the "gotasks add" command is invoked.
+
+Usage: gotasks add <descrição> [--priority low|medium|high]
+*/
 func RunAdd(args []string) {
 	addCmd := flag.NewFlagSet("add", flag.ContinueOnError)
 	priority := addCmd.String("priority", "medium", "Task priority (low, medium, high)")
