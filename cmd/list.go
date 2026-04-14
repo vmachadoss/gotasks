@@ -8,6 +8,10 @@ import (
 	"github.com/vmachadoss/gotasks/internal/storage"
 )
 
+/* RunList lists all tasks when the "gotasks list" command is invoked.
+ *
+ * Usage: gotasks list [--status <status>] [--priority <priority>] [--id <id>]
+ */
 func RunList(args []string) {
 	listCmd := flag.NewFlagSet("list", flag.ContinueOnError)
 

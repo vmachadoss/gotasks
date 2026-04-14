@@ -48,6 +48,7 @@ func ensureStorageExists(filePath string) error {
 	return nil
 }
 
+// NewTask creates a new task struct with the given description and priority.
 func NewTask(description, priority string) *Task {
 	now := time.Now().Format("2006-01-02T15:04:05Z07:00")
 
@@ -60,6 +61,7 @@ func NewTask(description, priority string) *Task {
 	}
 }
 
+// LoadTasks loads the tasks from the tasks file.
 func LoadTasks() ([]Task, error) {
 	filePath, err := tasksFilePath()
 	if err != nil {
@@ -83,6 +85,7 @@ func LoadTasks() ([]Task, error) {
 	return tasks, nil
 }
 
+// SaveTasks saves the tasks to the tasks file.
 func SaveTasks(tasks []Task) error {
 	filePath, err := tasksFilePath()
 	if err != nil {
@@ -101,6 +104,7 @@ func SaveTasks(tasks []Task) error {
 	return nil
 }
 
+// NextID returns the next available task ID.
 func NextID(tasks []Task) int {
 	max := 0
 	for _, task := range tasks {
@@ -111,6 +115,7 @@ func NextID(tasks []Task) int {
 	return max + 1
 }
 
+// UpdateTask updates the task with the given ID using the provided updates.
 func UpdateTask(id int, updates map[string]string) (*Task, error) {
 	tasks, err := LoadTasks()
 	if err != nil {
@@ -153,6 +158,7 @@ func UpdateTask(id int, updates map[string]string) (*Task, error) {
 	return found, nil
 }
 
+// GetTaskByID returns the task with the given ID.
 func GetTaskByID(id int) (*Task, error) {
 	tasks, err := LoadTasks()
 	if err != nil {
@@ -168,6 +174,7 @@ func GetTaskByID(id int) (*Task, error) {
 	return nil, fmt.Errorf("task with ID %d not found", id)
 }
 
+// FilterTasks filters the tasks based on the given status, priority, and ID.
 func FilterTasks(status, priority string, id int) ([]Task, error) {
 	tasks, err := LoadTasks()
 	if err != nil {

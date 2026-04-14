@@ -8,6 +8,10 @@ import (
 	"github.com/vmachadoss/gotasks/internal/storage"
 )
 
+/* RunGet retrieves a task by its ID when the "gotasks get" command is invoked.
+ *
+ * Usage: gotasks get <task_id>
+ */
 func RunGet(args []string) {
 	if len(args) == 0 {
 		fmt.Println("Usage: get <task_id>")
