@@ -10,6 +10,11 @@ import (
 	"github.com/vmachadoss/gotasks/internal/storage"
 )
 
+/*
+RunRm deletes a task by its ID.
+
+Usage: gotasks rm <id>
+*/
 func RunRm(args []string) {
 	if len(args) == 0 {
 		fmt.Println("Use: gotasks rm <id>")

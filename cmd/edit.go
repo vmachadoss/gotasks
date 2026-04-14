@@ -9,6 +9,11 @@ import (
 	"github.com/vmachadoss/gotasks/internal/storage"
 )
 
+/*
+RunEdit edits an existing task when the "gotasks edit" command is invoked.
+
+Usage: gotasks edit <id> [--desc \"...\"] [--priority low|medium|high] [--status pending|in-progress|done]
+*/
 func RunEdit(args []string) {
 	editCmd := flag.NewFlagSet("edit", flag.ContinueOnError)
 
