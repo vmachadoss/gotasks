@@ -8,6 +8,8 @@ import (
 	"time"
 )
 
+var TestStoragePath string
+
 type Task struct {
 	ID          int    `json:"id"`
 	Description string `json:"description"`
@@ -18,6 +20,10 @@ type Task struct {
 }
 
 func tasksFilePath() (string, error) {
+	if TestStoragePath != "" {
+		return TestStoragePath, nil
+	}
+
 	home, err := os.UserHomeDir()
 	if err != nil {
 		return "", err
